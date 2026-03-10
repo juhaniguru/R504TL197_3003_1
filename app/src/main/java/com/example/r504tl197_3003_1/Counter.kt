@@ -29,12 +29,16 @@ fun CounterRoot(modifier: Modifier = Modifier) {
 
         mutableIntStateOf(0)
     }
-    Counter(count = count.intValue)
+    Counter(count = count.intValue, onClick = {
+        // count.intValue = count.intValue + 1
+        count.intValue += 1
+    })
+
 }
 
 
 @Composable
-fun Counter(modifier: Modifier = Modifier, count: Int) {
+fun Counter(modifier: Modifier = Modifier, count: Int, onClick : () -> Unit) {
 
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -43,9 +47,7 @@ fun Counter(modifier: Modifier = Modifier, count: Int) {
 
     ) {
         Button(onClick = {
-
-
-
+            onClick()
         }) {
             Text("count: $count")
         }
