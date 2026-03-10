@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -22,15 +23,19 @@ const val constCounter = 0
 // mutableStateOfista on olemassa integereille oma overload (mutableIntStateOf())
 
 
+@Composable
+fun CounterRoot(modifier: Modifier = Modifier) {
+    val count = rememberSaveable {
 
+        mutableIntStateOf(0)
+    }
+    Counter(count = count.intValue)
+}
 
 
 @Composable
-fun Counter(modifier: Modifier = Modifier) {
-    val count = rememberSaveable {
+fun Counter(modifier: Modifier = Modifier, count: Int) {
 
-        mutableStateOf(0)
-    }
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -38,12 +43,11 @@ fun Counter(modifier: Modifier = Modifier) {
 
     ) {
         Button(onClick = {
-            // kun muuttujan arvo laitetaan mutableStateOfiin, sitä ei voi suoraan enää kasvattaa
-            // vaan kasvatetaan sen valueta
-            count.value++
+
+
 
         }) {
-            Text("count: ${count.value}")
+            Text("count: $count")
         }
     }
 }

@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             R504TL197_3003_1Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Counter(modifier = Modifier
+                    CounterRoot(modifier = Modifier
                         .fillMaxSize()
                         .padding(innerPadding))
                 }
