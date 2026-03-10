@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
@@ -23,9 +24,10 @@ const val constCounter = 0
 
 
 
+
 @Composable
 fun Counter(modifier: Modifier = Modifier) {
-    val count = remember {
+    val count = rememberSaveable {
 
         mutableStateOf(0)
     }
